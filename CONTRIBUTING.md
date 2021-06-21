@@ -113,17 +113,3 @@ You can run automated tests using the following commands:
 npm run test
 ```
 
-## Deployment
-
-The CI will automatically build and test the latest `master` branch if it's pushed to.
-
-Deploying the package is also handled by the CI. We use standard semver versioning, and the CI will build, test and prepare for deployment any commits tagged with that format.
-
-Once tested, the following CI pipeline jobs can be triggered:
-
-- `deploy-npm` publishes this version to npm `@zappar/zappar-babylonjs`
-- `deploy-patch` uploads the contents of the `umd` folder to `https://libs.zappar.com/zappar-babylonjs/X.Y.Z/`, and a downloadable zip of the whole folder to `https://libs.zappar.com/zappar-babylonjs/X.Y.Z/zappar.zip`
-- `deploy-minor` does the same as `deploy-patch` but to `https://libs.zappar.com/zappar-babylonjs/X.Y/`
-- `deploy-major` does the same as `deploy-patch` but to `https://libs.zappar.com/zappar-babylonjs/X/`
-
-Please seek a thumbs-up from `#universal-ar-tech` on Slack before deploying any changes.

@@ -58,8 +58,9 @@ You may also be interested in:
          * [Face Mesh](#face-mesh)
          * [Head Masking](#head-masking)
          * [Instant World Tracking](#instant-world-tracking)
+      * [Links and Resources](#links-and-resources)
 
-<!-- Added by: zapparadmin, at: Mon Jun 21 11:59:35 BST 2021 -->
+<!-- Added by: zapparadmin, at: Mon Jun 21 15:17:28 BST 2021 -->
 
 <!--te-->
 </details>
@@ -99,7 +100,7 @@ Unzip into your web project and reference from your HTML like this:
 Reference the zappar.js library from your HTML like this:
 
 ```html
-<script src="https://libs.zappar.com/zappar-babylon/0.3.25/zappar-babylon.js"></script>
+<script src="https://libs.zappar.com/zappar-babylon/0.3.26/zappar-babylon.js"></script>
 ```
 
 ### NPM Webpack Package
@@ -208,7 +209,9 @@ This library works well on the browsers that enjoy the vast majority of mobile m
 *Functional but not our primary support target (support quality):*
 
 - Most Webkit/Blink-based web browsers for Android, including Brave (good)
+- Most third-party web browsers for iOS from iOS 14.3 and later (good)
 - iOS in-app web views implemented with SFSafariViewController (good)
+- iOS in-app web views implemented with WKWebView from iOS 14.3 (good)
 - Firefox for Android (good, however performance may be lower than other browsers)
 - Chrome for Mac/Windows (*)
 - Firefox for Mac/Windows (*)
@@ -216,8 +219,9 @@ This library works well on the browsers that enjoy the vast majority of mobile m
 
 *Known to not work:*
 
-- iOS in-app web views implemented with WKWebView or UIWebView - these iOS technologies do not support camera access at all and thus we're unable to support them. We hope that Apple will rectify this issue in a future iOS release.
-- Non-Safari web browsers on iOS, including Chrome, Firefox and Brave - these browsers use WKWebView due to App Store restrictions and thus do not support camera access.
+- iOS in-app web views implemented with WKWebView prior to iOS 14.3 - this iOS technology do not support camera access at all and thus we’re unable to support it. Apple has rectified this issue in iOS 14.3.
+- iOS in-app web views implemented with the deprecated UIWebView component - this iOS technology do not support camera access at all and thus we’re unable to support it.
+- Non-Safari web browsers on iOS, including Chrome, Firefox and Brave, before iOS 14.3 - these browsers use WKWebView due to App Store restrictions and thus do not support camera access.
 
 \* Browsers without motion sensor access (e.g desktop browsers) don't support instant world tracking or attitude-based camera poses.
 
@@ -373,7 +377,7 @@ The Zappar library provides multiple modes for the camera to move around in the 
 - `ZapparBabylon.CameraPoseMode.Attitude`: the camera stays at the origin of the scene, but rotates as the user rotates the physical device. When the Zappar library initializes, the negative Z axis of world space points forward in front of the user.
 - `ZapparBabylon.CameraPoseMode.AnchorOrigin`: the origin of the scene is the center of the anchor specified by the camera's `poseAnchorOrigin` parameter. In this case the camera moves and rotates in world space around the anchor at the origin.
 
- The correct choice of camera pose with depend on your given use case and content. Here are some examples you might like to consider when choosing which is best for you:
+ The correct choice of camera pose will depend on your given use case and content. Here are some examples you might like to consider when choosing which is best for you:
 
 - To have a light that always shines down from above the user, regardless of the angle of the device or anchors, use `ZapparBabylon.CameraPoseMode.Attitude` and place a light shining down the negative Y axis is world space.
 - In an application with a physics simulation of stacked blocks, and with gravity pointing down the negative Y axis of world space, using `ZapparBabylon.CameraPoseMode.AnchorOrigin` would allow the blocks to rest on a tracked image regardless of how the image is held by the user, while using `ZapparBabylon.CameraPoseMode.Attitude` would allow the user to tip the blocks off the image by tilting it.
@@ -696,3 +700,12 @@ engine.runRenderLoop(() => {
 });
 
 ```
+
+## Links and Resources
+
+- [Web site](https://zap.works/universal-ar/)
+- [Documentation](https://docs.zap.works/universal-ar/web-libraries/babylonjs/)
+- [API Reference](<https://zappar-xr.github.io/zappar-babylonjs/>)
+- [Forum](https://forum.zap.works/)
+- [Issue tracker](https://github.com/zappar-xr/zappar-babylonjs/issues)
+- [Source code](https://github.com/zappar-xr/zappar-babylonjs)
