@@ -1,0 +1,94 @@
+{
+  "name": "@zappar/zappar-babylonjs",
+  "version": "0.3.24",
+  "description": "BabylonJS wrappers for Zappar's computer vision library",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
+  "repository": "https://github.com/zappar-xr/zappar-babylonjs/",
+  "issues": "https://github.com/zappar-xr/zappar-babylonjs/issues/",
+  "homepage": "https://zap.works/universal-ar/",
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "lib/**/*",
+    "umd/**/*"
+  ],
+  "scripts": {
+    "build:standalone": "webpack --config=webpack.config.standalone.js --mode=production",
+    "build:standalone-debug": "webpack --config=webpack.config.standalone.dev.js --mode=development",
+    "build:module": "tsc",
+    "build:tests": "webpack --config=webpack.config.tests.js --mode=development",
+    "build": "npm run build:standalone && npm run build:module && npm run build:tests",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "npm run build && jest",
+    "jest": "jest",
+    "tests": "npm run build && webpack serve --mode development  --config=webpack.config.tests.js",
+    "tests:nobuild": "webpack serve --mode development  --config=webpack.config.tests.js",
+    "start": "npm run tests",
+    "kill-test-process": "lsof -P | grep ':8081' | awk '{print $2}' | xargs kill -9",
+    "typedoc": "typedoc --out docs src/index.ts --excludePrivate --excludeProtected --theme minimal"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Zappar Limited",
+    "url": "https://www.zappar.com/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/expect-puppeteer": "^4.4.5",
+    "@types/jest": "^26.0.23",
+    "@types/jest-environment-puppeteer": "^4.4.1",
+    "@types/jest-image-snapshot": "^4.3.0",
+    "@types/node": "^15.3.0",
+    "@types/puppeteer": "^5.4.3",
+    "@types/stats.js": "^0.17.0",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "@zappar/test-utils": "0.0.3",
+    "babylonjs": "^4.2.0",
+    "babylonjs-gui": "^4.2.0",
+    "babylonjs-loaders": "^4.2.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "eslint-webpack-plugin": "^2.5.4",
+    "html-webpack-plugin": "^5.3.1",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "jest-image-snapshot": "^4.5.0",
+    "jest-puppeteer": "^5.0.3",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.1",
+    "puppeteer": "^9.1.1",
+    "stats.js": "^0.17.0",
+    "ts-jest": "^26.5.6",
+    "ts-loader": "^9.1.2",
+    "typedoc": "^0.21.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "dependencies": {
+    "@zappar/zappar": "^0.3.11",
+    "gl-matrix": "^3.3.0"
+  },
+  "peerDependencies": {
+    "babylonjs": "4.0.0 - 4.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.(ts|tsx)": [
+      "npm run --silent lint:fix"
+    ]
+  }
+}

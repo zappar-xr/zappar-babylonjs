@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",
+      "declaration": true,
+      "outDir": "./lib",
+      "lib": ["es2015", "dom"],
+      "strict": true,
+      "types": [ "babylonjs", "babylonjs-loaders", "jest", "puppeteer", "ts-jest", "jest-environment-puppeteer"]
+    },
+    "include": ["src", "tests"],
+    "exclude": ["node_modules"],
+  }
