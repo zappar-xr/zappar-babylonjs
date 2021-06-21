@@ -2827,6 +2827,8 @@ img {
 				<h1>Zappar for BabylonJS</h1>
 			</a>
 			<p>This library allows you use Zappar&#39;s best-in-class AR technology with content built using the 3D rendering platform BabylonJS.</p>
+			<p>It provides high performance (30 frames-per-second) face, image and world tracking, in the browsers already installed on your users&#39; mobile phones.</p>
+			<img src="preview/preview.gif" width="450"/>
 			<p>You may also be interested in:</p>
 			<ul>
 				<li><a href="https://www.npmjs.com/package/@zappar/zappar-aframe">Zappar for A-Frame</a> (@zappar/zappar-aframe)</li>
@@ -2901,7 +2903,7 @@ img {
 						</ul>
 					</li>
 				</ul>
-				<!-- Added by: zapparadmin, at: Mon Jun 21 11:11:02 BST 2021 -->
+				<!-- Added by: zapparadmin, at: Mon Jun 21 11:59:35 BST 2021 -->
 				<!--te-->
 			</details>
 			<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
@@ -2922,17 +2924,17 @@ img {
 				</thead>
 				<tbody><tr>
 						<td>Image Tracking</td>
-						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-image-tracking-standalone-bootstrap">GitHub url </a></td>
+						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-image-tracking-standalone-bootstrap">GitHub url</a></td>
 						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-image-tracking-webpack-bootstrap">GitHub url</a></td>
 					</tr>
 					<tr>
 						<td>Face Tracking</td>
-						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-face-tracking-standalone-bootstrap">GitHub url </a></td>
+						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-face-tracking-standalone-bootstrap">GitHub url</a></td>
 						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-face-tracking-webpack-bootstrap">GitHub url</a></td>
 					</tr>
 					<tr>
 						<td>Instant Tracking</td>
-						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-instant-tracking-standalone-bootstrap">GitHub url </a></td>
+						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-instant-tracking-standalone-bootstrap">GitHub url</a></td>
 						<td><a href="https://github.com/zappar-xr/zappar-babylonjs-instant-tracking-webpack-bootstrap">GitHub url</a></td>
 					</tr>
 			</tbody></table>
@@ -2954,7 +2956,7 @@ img {
 				<h3>CDN</h3>
 			</a>
 			<p>Reference the zappar.js library from your HTML like this:</p>
-			<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://libs.zappar.com/zappar-babylon/0.3.24/zappar-babylon.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+			<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://libs.zappar.com/zappar-babylon/0.3.25/zappar-babylon.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
 </code></pre>
 			<a href="#npm-webpack-package" id="npm-webpack-package" style="color: inherit; text-decoration: none;">
 				<h3>NPM Webpack Package</h3>
@@ -3029,10 +3031,10 @@ img {
 			</a>
 			<p>Due to browser restrictions surrounding use of the camera, you must use HTTPS to view or preview your site, even if doing so locally from your computer. If you&#39;re using <code>webpack</code>, consider using <code>webpack-dev-server</code> which has an <code>https</code> option to enable this.</p>
 			<p>Alternatively you can use the <a href="https://www.npmjs.com/package/@zappar/zapworks-cli">ZapWorks command-line tool</a> to serve a folder over HTTPS for access on your local computer, like this:</p>
-			<pre><code class="language-bash"><span style="color: #000000">$ zapworks serve </span><span style="color: #795E26">.</span>
+			<pre><code class="language-bash"><span style="color: #000000">zapworks serve </span><span style="color: #795E26">.</span>
 </code></pre>
 			<p>The command also lets you serve the folder for access by other devices on your local network, like this:</p>
-			<pre><code class="language-bash"><span style="color: #000000">$ zapworks serve </span><span style="color: #795E26">.</span><span style="color: #000000"> --lan</span>
+			<pre><code class="language-bash"><span style="color: #000000">zapworks serve </span><span style="color: #795E26">.</span><span style="color: #000000"> --lan</span>
 </code></pre>
 			<a href="#compatibility-and-browser-support" id="compatibility-and-browser-support" style="color: inherit; text-decoration: none;">
 				<h2>Compatibility and Browser Support</h2>
@@ -3208,7 +3210,7 @@ img {
 				<h4>Target File</h4>
 			</a>
 			<p><code>ImageTracker</code>s use a special &#39;target file&#39; that&#39;s been generated from the source image you&#39;d like to track. You can generate them using the ZapWorks command-line utility like this:</p>
-			<pre><code class="language-bash"><span style="color: #000000">$ zapworks train myImage.png</span>
+			<pre><code class="language-bash"><span style="color: #000000">zapworks train myImage.png</span>
 </code></pre>
 			<p>The resulting file can be loaded into an image tracker object by passing it to the <code>loadTarget(...)</code> function as either a URL or an ArrayBuffer. The function returns a promise that resolves when the target file has been loaded successfully.</p>
 			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">imageTracker</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">ImageTracker</span><span style="color: #000000">();</span>
@@ -3528,7 +3530,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">on<wbr>Frame<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/46e4558/src/defaultpipeline.ts#L9">src/defaultpipeline.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/b834963/src/defaultpipeline.ts#L9">src/defaultpipeline.ts:9</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3540,10 +3542,10 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="skipversionlog" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> skip<wbr>Version<wbr>Log</h3>
-				<div class="tsd-signature tsd-kind-icon">skip<wbr>Version<wbr>Log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0.3.24&quot;</span><span class="tsd-signature-symbol"> = &quot;0.3.24&quot;</span></div>
+				<div class="tsd-signature tsd-kind-icon">skip<wbr>Version<wbr>Log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0.3.25&quot;</span><span class="tsd-signature-symbol"> = &quot;0.3.25&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/46e4558/src/version.ts#L4">src/version.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/b834963/src/version.ts#L4">src/version.ts:4</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3612,7 +3614,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/46e4558/src/defaultpipeline.ts#L114">src/defaultpipeline.ts:114</a></li>
+								<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/b834963/src/defaultpipeline.ts#L114">src/defaultpipeline.ts:114</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
