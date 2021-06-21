@@ -2900,10 +2900,11 @@ img {
 									<li><a href="#instant-world-tracking">Instant World Tracking</a></li>
 								</ul>
 							</li>
+							<li><a href="#links-and-resources">Links and Resources</a></li>
 						</ul>
 					</li>
 				</ul>
-				<!-- Added by: zapparadmin, at: Mon Jun 21 11:59:35 BST 2021 -->
+				<!-- Added by: zapparadmin, at: Mon Jun 21 15:17:28 BST 2021 -->
 				<!--te-->
 			</details>
 			<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
@@ -2956,7 +2957,7 @@ img {
 				<h3>CDN</h3>
 			</a>
 			<p>Reference the zappar.js library from your HTML like this:</p>
-			<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://libs.zappar.com/zappar-babylon/0.3.25/zappar-babylon.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+			<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://libs.zappar.com/zappar-babylon/0.3.26/zappar-babylon.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
 </code></pre>
 			<a href="#npm-webpack-package" id="npm-webpack-package" style="color: inherit; text-decoration: none;">
 				<h3>NPM Webpack Package</h3>
@@ -3048,7 +3049,9 @@ img {
 			<p><em>Functional but not our primary support target (support quality):</em></p>
 			<ul>
 				<li>Most Webkit/Blink-based web browsers for Android, including Brave (good)</li>
+				<li>Most third-party web browsers for iOS from iOS 14.3 and later (good)</li>
 				<li>iOS in-app web views implemented with SFSafariViewController (good)</li>
+				<li>iOS in-app web views implemented with WKWebView from iOS 14.3 (good)</li>
 				<li>Firefox for Android (good, however performance may be lower than other browsers)</li>
 				<li>Chrome for Mac/Windows (*)</li>
 				<li>Firefox for Mac/Windows (*)</li>
@@ -3056,8 +3059,9 @@ img {
 			</ul>
 			<p><em>Known to not work:</em></p>
 			<ul>
-				<li>iOS in-app web views implemented with WKWebView or UIWebView - these iOS technologies do not support camera access at all and thus we&#39;re unable to support them. We hope that Apple will rectify this issue in a future iOS release.</li>
-				<li>Non-Safari web browsers on iOS, including Chrome, Firefox and Brave - these browsers use WKWebView due to App Store restrictions and thus do not support camera access.</li>
+				<li>iOS in-app web views implemented with WKWebView prior to iOS 14.3 - this iOS technology do not support camera access at all and thus we’re unable to support it. Apple has rectified this issue in iOS 14.3.</li>
+				<li>iOS in-app web views implemented with the deprecated UIWebView component - this iOS technology do not support camera access at all and thus we’re unable to support it.</li>
+				<li>Non-Safari web browsers on iOS, including Chrome, Firefox and Brave, before iOS 14.3 - these browsers use WKWebView due to App Store restrictions and thus do not support camera access.</li>
 			</ul>
 			<p>* Browsers without motion sensor access (e.g desktop browsers) don&#39;t support instant world tracking or attitude-based camera poses.</p>
 			<a href="#detecting-browser-compatibility" id="detecting-browser-compatibility" style="color: inherit; text-decoration: none;">
@@ -3186,7 +3190,7 @@ img {
 				<li><code>ZapparBabylon.CameraPoseMode.Attitude</code>: the camera stays at the origin of the scene, but rotates as the user rotates the physical device. When the Zappar library initializes, the negative Z axis of world space points forward in front of the user.</li>
 				<li><code>ZapparBabylon.CameraPoseMode.AnchorOrigin</code>: the origin of the scene is the center of the anchor specified by the camera&#39;s <code>poseAnchorOrigin</code> parameter. In this case the camera moves and rotates in world space around the anchor at the origin.</li>
 			</ul>
-			<p> The correct choice of camera pose with depend on your given use case and content. Here are some examples you might like to consider when choosing which is best for you:</p>
+			<p> The correct choice of camera pose will depend on your given use case and content. Here are some examples you might like to consider when choosing which is best for you:</p>
 			<ul>
 				<li>To have a light that always shines down from above the user, regardless of the angle of the device or anchors, use <code>ZapparBabylon.CameraPoseMode.Attitude</code> and place a light shining down the negative Y axis is world space.</li>
 				<li>In an application with a physics simulation of stacked blocks, and with gravity pointing down the negative Y axis of world space, using <code>ZapparBabylon.CameraPoseMode.AnchorOrigin</code> would allow the blocks to rest on a tracked image regardless of how the image is held by the user, while using <code>ZapparBabylon.CameraPoseMode.Attitude</code> would allow the user to tip the blocks off the image by tilting it.</li>
@@ -3433,6 +3437,17 @@ img {
 <span style="color: #000000">});</span>
 
 </code></pre>
+			<a href="#links-and-resources" id="links-and-resources" style="color: inherit; text-decoration: none;">
+				<h2>Links and Resources</h2>
+			</a>
+			<ul>
+				<li><a href="https://zap.works/universal-ar/">Web site</a></li>
+				<li><a href="https://docs.zap.works/universal-ar/web-libraries/babylonjs/">Documentation</a></li>
+				<li><a href="https://zappar-xr.github.io/zappar-babylonjs/">API Reference</a></li>
+				<li><a href="https://forum.zap.works/">Forum</a></li>
+				<li><a href="https://github.com/zappar-xr/zappar-babylonjs/issues">Issue tracker</a></li>
+				<li><a href="https://github.com/zappar-xr/zappar-babylonjs">Source code</a></li>
+			</ul>
 		</div>
 		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
@@ -3531,7 +3546,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">on<wbr>Frame<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/b834963/src/defaultpipeline.ts#L9">src/defaultpipeline.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/8be4d76/src/defaultpipeline.ts#L9">src/defaultpipeline.ts:9</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3543,10 +3558,10 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="skipversionlog" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> skip<wbr>Version<wbr>Log</h3>
-				<div class="tsd-signature tsd-kind-icon">skip<wbr>Version<wbr>Log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0.3.25&quot;</span><span class="tsd-signature-symbol"> = &quot;0.3.25&quot;</span></div>
+				<div class="tsd-signature tsd-kind-icon">skip<wbr>Version<wbr>Log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0.3.26&quot;</span><span class="tsd-signature-symbol"> = &quot;0.3.26&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/b834963/src/version.ts#L4">src/version.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/8be4d76/src/version.ts#L4">src/version.ts:4</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3615,7 +3630,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/b834963/src/defaultpipeline.ts#L114">src/defaultpipeline.ts:114</a></li>
+								<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/8be4d76/src/defaultpipeline.ts#L114">src/defaultpipeline.ts:114</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
