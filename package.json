@@ -1,6 +1,6 @@
 {
   "name": "@zappar/zappar-babylonjs",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "BabylonJS wrappers for Zappar's computer vision library",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",

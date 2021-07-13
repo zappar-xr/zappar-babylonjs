@@ -12,6 +12,8 @@ export { default as FaceMeshGeometry } from "./mesh/face";
 export { default as FaceMeshLoader } from "./loaders/faceMesh";
 export { default as HeadMaskMeshLoader } from "./loaders/headMaskMesh";
 export { default as ImageTrackerLoader } from "./loaders/imageTracker";
+export { default as CameraEnvironmentMap } from "./cameraEnvironmentTexture";
+
 export {
   ImageAnchor,
   BarcodeFinderFound,

@@ -1,6 +1,6 @@
-# Zappar for BabylonJS
+# Zappar for Babylon.js
 
-This library allows you use Zappar's best-in-class AR technology with content built using the 3D rendering platform BabylonJS.
+This library allows you use Zappar's best-in-class AR technology with content built using the 3D rendering platform Babylon.js.
 
 It provides high performance (30 frames-per-second) face, image and world tracking, in the browsers already installed on your users' mobile phones.
 
@@ -21,7 +21,7 @@ You may also be interested in:
 <summary>Click to expand table of contents</summary>
 
 <!--ts-->
-   * [Zappar for BabylonJS](#zappar-for-babylonjs)
+   * [Zappar for Babylon.js](#zappar-for-babylonjs)
       * [Table Of Contents](#table-of-contents)
       * [Getting Started](#getting-started)
          * [Bootstrap Projects](#bootstrap-projects)
@@ -42,6 +42,7 @@ You may also be interested in:
             * [Custom Video Devices](#custom-video-devices)
             * [Clipping Planes](#clipping-planes)
          * [Processing Camera Frames](#processing-camera-frames)
+         * [Realtime Camera-based Reflections](#realtime-camera-based-reflections)
          * [Permissions](#permissions)
          * [Starting the Camera](#starting-the-camera)
          * [Camera Pose](#camera-pose)
@@ -60,7 +61,7 @@ You may also be interested in:
          * [Instant World Tracking](#instant-world-tracking)
       * [Links and Resources](#links-and-resources)
 
-<!-- Added by: zapparadmin, at: Mon Jun 21 15:17:28 BST 2021 -->
+<!-- Added by: zapparadmin, at: Tue Jul 13 15:40:23 BST 2021 -->
 
 <!--te-->
 </details>
@@ -100,7 +101,7 @@ Unzip into your web project and reference from your HTML like this:
 Reference the zappar.js library from your HTML like this:
 
 ```html
-<script src="https://libs.zappar.com/zappar-babylon/0.3.26/zappar-babylon.js"></script>
+<script src="https://libs.zappar.com/zappar-babylon/0.3.27/zappar-babylon.js"></script>
 ```
 
 ### NPM Webpack Package
@@ -138,7 +139,7 @@ module.exports = {
 
 ## Overview
 
-You can integrate the Zappar library with the existing `runRenderLoop` loop of your BabylonJS project. A typical project may look like this. The remainder of this document goes into more detail about each of the component elements of this example.
+You can integrate the Zappar library with the existing `runRenderLoop` loop of your Babylon.js project. A typical project may look like this. The remainder of this document goes into more detail about each of the component elements of this example.
 
 ```ts
 import * as BABYLON from 'babylonjs';
@@ -146,7 +147,7 @@ import * as BABYLON from 'babylonjs';
 import targetfile from './assets/example-tracking-image.zpt';
 import * as ZapparBabylon from '@zappar/zappar-babylonjs';
 
-// Setup BabylonJS in the usual way.
+// Setup Babylon.js in the usual way.
 const canvasHolder = document.querySelector('#canvas-holder') || document.createElement('div');
 const canvas = document.createElement('canvas');
 canvasHolder.appendChild(canvas);
@@ -308,6 +309,33 @@ Alternatively, you may allow the camera to update itself (no longer requiring th
 const camera = new ZapparBabylon.Camera('camera', scene, true); // Self updating camera
 ```
 
+### Realtime Camera-based Reflections
+
+The SDK provides an automatically generated environment map that's useful if you're using materials that support reflections (e.g. `PBRMetallicRoughnessMaterial`, `StandardMaterial`). The map uses the camera feed to create an approximate environment that can add some realism to your scene.
+
+To use the map, first construct an instance:
+```ts
+const env = new ZapparBabylon.CameraEnvironmentMap(camera, engine);
+```
+
+Attach the map to your scene to affect all relevant materials:
+```ts
+scene.environmentTexture = envMap.environmentMap;
+```
+
+Or attach it to specific materials, if you prefer:
+```ts
+material.environmentTexture = envMap.environmentMap;
+```
+
+Finally, call `update()` on the map each frame, between updating the camera and rendering the scene:
+```ts
+engine.runRenderLoop(() => {
+  env.update();
+  scene.render();
+});
+```
+
 ### Permissions
 
 The library needs to ask the user for permission to access the camera and motion sensors on the device.
@@ -371,7 +399,7 @@ camera.userCameraMirrorMode = ZapparBabylon.CameraMirrorMode.CSS;
 
 ### Camera Pose
 
-The Zappar library provides multiple modes for the camera to move around in the BabylonJS scene. You can set this mode with the `poseMode` parameter of your camera object. There are the following options:
+The Zappar library provides multiple modes for the camera to move around in the Babylon.js scene. You can set this mode with the `poseMode` parameter of your camera object. There are the following options:
 
 - `ZapparBabylon.CameraPoseMode.Default`: in this mode the camera stays at the origin of the scene, pointing down the negative Z axis. Any tracked anchors will move around in your scene as the user moves the physical camera and real-world tracked objects.
 - `ZapparBabylon.CameraPoseMode.Attitude`: the camera stays at the origin of the scene, but rotates as the user rotates the physical device. When the Zappar library initializes, the negative Z axis of world space points forward in front of the user.
@@ -433,7 +461,7 @@ Anchors have the following parameters:
 
 You can access the anchors of a tracker using its `anchors` parameter - it's a JavaScript `Map` keyed with the IDs of the anchors. Trackers will reuse existing non-visible anchors for new images that appear and thus, until `ImageTracker` supports tracking more than one image at a time, there is never more than one anchor managed by each `ImageTracker`. Each tracker also exposes a JavaScript `Set` of anchors visible in the current camera frame as its `visible` parameter.
 
-To attach 3D content (e.g. BabylonJS objects or models) to an `ImageTracker` or an `ImageAnchor`, the library provides `ImageAnchorTransformNode`. It's a BabylonJS TransformNode that will follow the supplied anchor (or, in the case of a supplied `ImageTracker`, the anchor most recently visible in that tracker) in the 3D view:
+To attach 3D content (e.g. Babylon.js objects or models) to an `ImageTracker` or an `ImageAnchor`, the library provides `ImageAnchorTransformNode`. It's a Babylon.js TransformNode that will follow the supplied anchor (or, in the case of a supplied `ImageTracker`, the anchor most recently visible in that tracker) in the 3D view:
 
 ```ts
 const imageAnchorTransformNode = new ZapparBabylon.ImageAnchorTransformNode('tracker', camera, imageTracker, scene);
@@ -513,7 +541,7 @@ Anchors have the following parameters:
 
 You can access the anchors of a tracker using its `anchors` parameter - it's a JavaScript `Map` keyed with the IDs of the anchors. Trackers will reuse existing non-visible anchors for new faces that appear and thus there are never more than `maxFaces` anchors handled by a given tracker. Each tracker also exposes a JavaScript `Set` of anchors visible in the current camera frame as its `visible` parameter.
 
-To attach 3D content (e.g. BabylonJS objects or models) to a `FaceTracker` or a `FaceAnchor`, the library provides `FaceAnchorTransformNode`. It's a BabylonJS TransformNode that will follow the supplied anchor (or, in the case of a supplied `FaceTracker`, the anchor most recently visible in that tracker) in the 3D view:
+To attach 3D content (e.g. Babylon.js objects or models) to a `FaceTracker` or a `FaceAnchor`, the library provides `FaceAnchorTransformNode`. It's a Babylon.js TransformNode that will follow the supplied anchor (or, in the case of a supplied `FaceTracker`, the anchor most recently visible in that tracker) in the 3D view:
 
 ```ts
 const faceAnchorTransformNode = new ZapparBabylon.FaceAnchorTransformNode('tracker', camera, faceTracker, scene);
@@ -586,7 +614,7 @@ Alternatively the library provides a loader for loading face mesh and data file:
 const faceMesh = new ZapparBabylon.FaceMeshLoader().loadFace();
 ```
 
-While the `faceMesh` object lets you access the raw vertex, UV, normal and indices data for the face mesh, you may wish to use the library's `FaceMeshGeometry` object which wraps the data as a BabylonJS Mesh. This Mesh object must still be childed to a `FaceAnchorTransformNode` to appear in the correct place on-screen:
+While the `faceMesh` object lets you access the raw vertex, UV, normal and indices data for the face mesh, you may wish to use the library's `FaceMeshGeometry` object which wraps the data as a Babylon.js Mesh. This Mesh object must still be childed to a `FaceAnchorTransformNode` to appear in the correct place on-screen:
 
 ```ts
 const faceTracker = new ZapparBabylon.FaceTrackerLoader().load();
@@ -667,7 +695,7 @@ instantWorldTracker.setAnchorPoseFromCameraOffset(0, 0, -5);
 
 The parameters passed in to this function correspond to the X, Y and Z coordinates (in camera space) of the point to track. Choosing a position with X and Y coordinates of zero, and a negative Z coordinate, will select a point on a surface directly in front of the center of the screen.
 
-To attach 3D content (e.g. BabylonJS objects or models) to an `InstantWorldTracker`, the library provides `InstantWorldAnchorTransformNode`. It's a BabylonJS TransformNode that will follow the anchor in the supplied `InstantWorldTracker` in the 3D view:
+To attach 3D content (e.g. Babylon.js objects or models) to an `InstantWorldTracker`, the library provides `InstantWorldAnchorTransformNode`. It's a Babylon.js TransformNode that will follow the anchor in the supplied `InstantWorldTracker` in the 3D view:
 
 ```ts
 const trackerTransformNode = new ZapparBabylon.InstantWorldAnchorTransformNode('tracker', camera, instantWorldTracker, scene);

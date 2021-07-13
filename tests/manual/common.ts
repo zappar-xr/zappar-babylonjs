@@ -19,7 +19,7 @@ const light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, -
 export const camera = new ZapparBabylon.Camera("camera", scene);
 
 ZapparBabylon.permissionRequestUI().then((granted) => {
-  if (granted) camera.start(true);
+  if (granted) camera.start();
   else ZapparBabylon.permissionDeniedUI();
 });
 

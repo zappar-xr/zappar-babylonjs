@@ -186,7 +186,7 @@ class Camera extends BABYLON.FreeCamera {
     // Shortest blank img uri
     this.backgroundTexture = new BABYLON.Texture("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", scene);
 
-    this.backgroundTexture.level = 0;
+    // this.backgroundTexture.level = 0;
 
     this.layer = new BABYLON.Layer("zapparCameraBackgroundLayer", null, scene);
     this.layer.texture = this.backgroundTexture;
