@@ -2723,6 +2723,9 @@ img {
 			<a href="classes/camera.html" class="tsd-kind-icon">Camera</a>
 		</li>
 		<li class=" tsd-kind-class">
+			<a href="classes/cameraenvironmentmap.html" class="tsd-kind-icon">Camera<wbr>Environment<wbr>Map</a>
+		</li>
+		<li class=" tsd-kind-class">
 			<a href="classes/camerasource.html" class="tsd-kind-icon">Camera<wbr>Source</a>
 		</li>
 		<li class=" tsd-kind-class">
@@ -2824,9 +2827,9 @@ img {
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
 			<a href="#zappar-for-babylonjs" id="zappar-for-babylonjs" style="color: inherit; text-decoration: none;">
-				<h1>Zappar for BabylonJS</h1>
+				<h1>Zappar for Babylon.js</h1>
 			</a>
-			<p>This library allows you use Zappar&#39;s best-in-class AR technology with content built using the 3D rendering platform BabylonJS.</p>
+			<p>This library allows you use Zappar&#39;s best-in-class AR technology with content built using the 3D rendering platform Babylon.js.</p>
 			<p>It provides high performance (30 frames-per-second) face, image and world tracking, in the browsers already installed on your users&#39; mobile phones.</p>
 			<img src="preview/preview.gif" width="450"/>
 			<p>You may also be interested in:</p>
@@ -2845,7 +2848,7 @@ img {
 				<summary>Click to expand table of contents</summary>
 				<!--ts-->
 				<ul>
-					<li><a href="#zappar-for-babylonjs">Zappar for BabylonJS</a><ul>
+					<li><a href="#zappar-for-babylonjs">Zappar for Babylon.js</a><ul>
 							<li><a href="#table-of-contents">Table Of Contents</a></li>
 							<li><a href="#getting-started">Getting Started</a><ul>
 									<li><a href="#bootstrap-projects">Bootstrap Projects</a></li>
@@ -2876,6 +2879,7 @@ img {
 										</ul>
 									</li>
 									<li><a href="#processing-camera-frames">Processing Camera Frames</a></li>
+									<li><a href="#realtime-camera-based-reflections">Realtime Camera-based Reflections</a></li>
 									<li><a href="#permissions">Permissions</a></li>
 									<li><a href="#starting-the-camera">Starting the Camera</a></li>
 									<li><a href="#camera-pose">Camera Pose</a></li>
@@ -2904,7 +2908,7 @@ img {
 						</ul>
 					</li>
 				</ul>
-				<!-- Added by: zapparadmin, at: Mon Jun 21 15:17:28 BST 2021 -->
+				<!-- Added by: zapparadmin, at: Tue Jul 13 15:40:23 BST 2021 -->
 				<!--te-->
 			</details>
 			<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
@@ -2957,7 +2961,7 @@ img {
 				<h3>CDN</h3>
 			</a>
 			<p>Reference the zappar.js library from your HTML like this:</p>
-			<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://libs.zappar.com/zappar-babylon/0.3.26/zappar-babylon.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+			<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://libs.zappar.com/zappar-babylon/0.3.27/zappar-babylon.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
 </code></pre>
 			<a href="#npm-webpack-package" id="npm-webpack-package" style="color: inherit; text-decoration: none;">
 				<h3>NPM Webpack Package</h3>
@@ -2987,13 +2991,13 @@ img {
 			<a href="#overview" id="overview" style="color: inherit; text-decoration: none;">
 				<h2>Overview</h2>
 			</a>
-			<p>You can integrate the Zappar library with the existing <code>runRenderLoop</code> loop of your BabylonJS project. A typical project may look like this. The remainder of this document goes into more detail about each of the component elements of this example.</p>
+			<p>You can integrate the Zappar library with the existing <code>runRenderLoop</code> loop of your Babylon.js project. A typical project may look like this. The remainder of this document goes into more detail about each of the component elements of this example.</p>
 			<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #0000FF">*</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #001080">BABYLON</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;babylonjs&#039;</span><span style="color: #000000">;</span>
 <span style="color: #008000">// Import path to the target file ( Made using @zappar/zapworks-cli )</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">targetfile</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;./assets/example-tracking-image.zpt&#039;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #0000FF">*</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@zappar/zappar-babylonjs&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #008000">// Setup BabylonJS in the usual way.</span>
+<span style="color: #008000">// Setup Babylon.js in the usual way.</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">canvasHolder</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">querySelector</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;#canvas-holder&#039;</span><span style="color: #000000">) || </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">createElement</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;div&#039;</span><span style="color: #000000">);</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">canvas</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">createElement</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;canvas&#039;</span><span style="color: #000000">);</span>
 <span style="color: #001080">canvasHolder</span><span style="color: #000000">.</span><span style="color: #795E26">appendChild</span><span style="color: #000000">(</span><span style="color: #001080">canvas</span><span style="color: #000000">);</span>
@@ -3135,6 +3139,25 @@ img {
 			<p>Alternatively, you may allow the camera to update itself (no longer requiring the step above) by constructing it as so:</p>
 			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">camera</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">Camera</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;camera&#039;</span><span style="color: #000000">, </span><span style="color: #001080">scene</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">); </span><span style="color: #008000">// Self updating camera</span>
 </code></pre>
+			<a href="#realtime-camera-based-reflections" id="realtime-camera-based-reflections" style="color: inherit; text-decoration: none;">
+				<h3>Realtime Camera-based Reflections</h3>
+			</a>
+			<p>The SDK provides an automatically generated environment map that&#39;s useful if you&#39;re using materials that support reflections (e.g. <code>PBRMetallicRoughnessMaterial</code>, <code>StandardMaterial</code>). The map uses the camera feed to create an approximate environment that can add some realism to your scene.</p>
+			<p>To use the map, first construct an instance:</p>
+			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">env</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">CameraEnvironmentMap</span><span style="color: #000000">(</span><span style="color: #001080">camera</span><span style="color: #000000">, </span><span style="color: #001080">engine</span><span style="color: #000000">);</span>
+</code></pre>
+			<p>Attach the map to your scene to affect all relevant materials:</p>
+			<pre><code class="language-ts"><span style="color: #001080">scene</span><span style="color: #000000">.</span><span style="color: #001080">environmentTexture</span><span style="color: #000000"> = </span><span style="color: #001080">envMap</span><span style="color: #000000">.</span><span style="color: #001080">environmentMap</span><span style="color: #000000">;</span>
+</code></pre>
+			<p>Or attach it to specific materials, if you prefer:</p>
+			<pre><code class="language-ts"><span style="color: #001080">material</span><span style="color: #000000">.</span><span style="color: #001080">environmentTexture</span><span style="color: #000000"> = </span><span style="color: #001080">envMap</span><span style="color: #000000">.</span><span style="color: #001080">environmentMap</span><span style="color: #000000">;</span>
+</code></pre>
+			<p>Finally, call <code>update()</code> on the map each frame, between updating the camera and rendering the scene:</p>
+			<pre><code class="language-ts"><span style="color: #001080">engine</span><span style="color: #000000">.</span><span style="color: #795E26">runRenderLoop</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">env</span><span style="color: #000000">.</span><span style="color: #795E26">update</span><span style="color: #000000">();</span>
+<span style="color: #000000">  </span><span style="color: #001080">scene</span><span style="color: #000000">.</span><span style="color: #795E26">render</span><span style="color: #000000">();</span>
+<span style="color: #000000">});</span>
+</code></pre>
 			<a href="#permissions" id="permissions" style="color: inherit; text-decoration: none;">
 				<h3>Permissions</h3>
 			</a>
@@ -3184,7 +3207,7 @@ img {
 			<a href="#camera-pose" id="camera-pose" style="color: inherit; text-decoration: none;">
 				<h3>Camera Pose</h3>
 			</a>
-			<p>The Zappar library provides multiple modes for the camera to move around in the BabylonJS scene. You can set this mode with the <code>poseMode</code> parameter of your camera object. There are the following options:</p>
+			<p>The Zappar library provides multiple modes for the camera to move around in the Babylon.js scene. You can set this mode with the <code>poseMode</code> parameter of your camera object. There are the following options:</p>
 			<ul>
 				<li><code>ZapparBabylon.CameraPoseMode.Default</code>: in this mode the camera stays at the origin of the scene, pointing down the negative Z axis. Any tracked anchors will move around in your scene as the user moves the physical camera and real-world tracked objects.</li>
 				<li><code>ZapparBabylon.CameraPoseMode.Attitude</code>: the camera stays at the origin of the scene, but rotates as the user rotates the physical device. When the Zappar library initializes, the negative Z axis of world space points forward in front of the user.</li>
@@ -3236,7 +3259,7 @@ img {
 				<li><code>onVisible</code> and <code>onNotVisible</code>: event handlers that emit when the anchor becomes visible, or disappears in the camera view. These events are emitted during your call to <code>camera.updateFrame()</code>.</li>
 			</ul>
 			<p>You can access the anchors of a tracker using its <code>anchors</code> parameter - it&#39;s a JavaScript <code>Map</code> keyed with the IDs of the anchors. Trackers will reuse existing non-visible anchors for new images that appear and thus, until <code>ImageTracker</code> supports tracking more than one image at a time, there is never more than one anchor managed by each <code>ImageTracker</code>. Each tracker also exposes a JavaScript <code>Set</code> of anchors visible in the current camera frame as its <code>visible</code> parameter.</p>
-			<p>To attach 3D content (e.g. BabylonJS objects or models) to an <code>ImageTracker</code> or an <code>ImageAnchor</code>, the library provides <code>ImageAnchorTransformNode</code>. It&#39;s a BabylonJS TransformNode that will follow the supplied anchor (or, in the case of a supplied <code>ImageTracker</code>, the anchor most recently visible in that tracker) in the 3D view:</p>
+			<p>To attach 3D content (e.g. Babylon.js objects or models) to an <code>ImageTracker</code> or an <code>ImageAnchor</code>, the library provides <code>ImageAnchorTransformNode</code>. It&#39;s a Babylon.js TransformNode that will follow the supplied anchor (or, in the case of a supplied <code>ImageTracker</code>, the anchor most recently visible in that tracker) in the 3D view:</p>
 			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">imageAnchorTransformNode</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">ImageAnchorTransformNode</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;tracker&#039;</span><span style="color: #000000">, </span><span style="color: #001080">camera</span><span style="color: #000000">, </span><span style="color: #001080">imageTracker</span><span style="color: #000000">, </span><span style="color: #001080">scene</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// Add in any 3D objects you&#039;d like to track to this image</span>
@@ -3299,7 +3322,7 @@ img {
 				<li><code>onVisible</code> and <code>onNotVisible</code>: event handlers that emit when the anchor becomes visible, or disappears in the camera view. These events are emitted during your call to <code>camera.updateFrame()</code></li>
 			</ul>
 			<p>You can access the anchors of a tracker using its <code>anchors</code> parameter - it&#39;s a JavaScript <code>Map</code> keyed with the IDs of the anchors. Trackers will reuse existing non-visible anchors for new faces that appear and thus there are never more than <code>maxFaces</code> anchors handled by a given tracker. Each tracker also exposes a JavaScript <code>Set</code> of anchors visible in the current camera frame as its <code>visible</code> parameter.</p>
-			<p>To attach 3D content (e.g. BabylonJS objects or models) to a <code>FaceTracker</code> or a <code>FaceAnchor</code>, the library provides <code>FaceAnchorTransformNode</code>. It&#39;s a BabylonJS TransformNode that will follow the supplied anchor (or, in the case of a supplied <code>FaceTracker</code>, the anchor most recently visible in that tracker) in the 3D view:</p>
+			<p>To attach 3D content (e.g. Babylon.js objects or models) to a <code>FaceTracker</code> or a <code>FaceAnchor</code>, the library provides <code>FaceAnchorTransformNode</code>. It&#39;s a Babylon.js TransformNode that will follow the supplied anchor (or, in the case of a supplied <code>FaceTracker</code>, the anchor most recently visible in that tracker) in the 3D view:</p>
 			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">faceAnchorTransformNode</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">FaceAnchorTransformNode</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;tracker&#039;</span><span style="color: #000000">, </span><span style="color: #001080">camera</span><span style="color: #000000">, </span><span style="color: #001080">faceTracker</span><span style="color: #000000">, </span><span style="color: #001080">scene</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// Child any 3D objects you&#039;d like to track to this face</span>
@@ -3355,7 +3378,7 @@ img {
 			<p>Alternatively the library provides a loader for loading face mesh and data file:</p>
 			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">faceMesh</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">FaceMeshLoader</span><span style="color: #000000">().</span><span style="color: #795E26">loadFace</span><span style="color: #000000">();</span>
 </code></pre>
-			<p>While the <code>faceMesh</code> object lets you access the raw vertex, UV, normal and indices data for the face mesh, you may wish to use the library&#39;s <code>FaceMeshGeometry</code> object which wraps the data as a BabylonJS Mesh. This Mesh object must still be childed to a <code>FaceAnchorTransformNode</code> to appear in the correct place on-screen:</p>
+			<p>While the <code>faceMesh</code> object lets you access the raw vertex, UV, normal and indices data for the face mesh, you may wish to use the library&#39;s <code>FaceMeshGeometry</code> object which wraps the data as a Babylon.js Mesh. This Mesh object must still be childed to a <code>FaceAnchorTransformNode</code> to appear in the correct place on-screen:</p>
 			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">faceTracker</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">FaceTrackerLoader</span><span style="color: #000000">().</span><span style="color: #795E26">load</span><span style="color: #000000">();</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trackerTransformNode</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">FaceTrackerTransformNode</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;tracker&#039;</span><span style="color: #000000">, </span><span style="color: #001080">camera</span><span style="color: #000000">, </span><span style="color: #001080">faceTracker</span><span style="color: #000000">, </span><span style="color: #001080">scene</span><span style="color: #000000">);</span>
 
@@ -3410,7 +3433,7 @@ img {
 			<pre><code class="language-ts"><span style="color: #001080">instantWorldTracker</span><span style="color: #000000">.</span><span style="color: #795E26">setAnchorPoseFromCameraOffset</span><span style="color: #000000">(</span><span style="color: #098658">0</span><span style="color: #000000">, </span><span style="color: #098658">0</span><span style="color: #000000">, -</span><span style="color: #098658">5</span><span style="color: #000000">);</span>
 </code></pre>
 			<p>The parameters passed in to this function correspond to the X, Y and Z coordinates (in camera space) of the point to track. Choosing a position with X and Y coordinates of zero, and a negative Z coordinate, will select a point on a surface directly in front of the center of the screen.</p>
-			<p>To attach 3D content (e.g. BabylonJS objects or models) to an <code>InstantWorldTracker</code>, the library provides <code>InstantWorldAnchorTransformNode</code>. It&#39;s a BabylonJS TransformNode that will follow the anchor in the supplied <code>InstantWorldTracker</code> in the 3D view:</p>
+			<p>To attach 3D content (e.g. Babylon.js objects or models) to an <code>InstantWorldTracker</code>, the library provides <code>InstantWorldAnchorTransformNode</code>. It&#39;s a Babylon.js TransformNode that will follow the anchor in the supplied <code>InstantWorldTracker</code> in the 3D view:</p>
 			<pre><code class="language-ts"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">trackerTransformNode</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">ZapparBabylon</span><span style="color: #000000">.</span><span style="color: #795E26">InstantWorldAnchorTransformNode</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;tracker&#039;</span><span style="color: #000000">, </span><span style="color: #001080">camera</span><span style="color: #000000">, </span><span style="color: #001080">instantWorldTracker</span><span style="color: #000000">, </span><span style="color: #001080">scene</span><span style="color: #000000">);</span>
 <span style="color: #008000">// Child in any 3D objects you&#039;d like to track to this point in space</span>
 <span style="color: #001080">myModel</span><span style="color: #000000">.</span><span style="color: #001080">parent</span><span style="color: #000000"> = </span><span style="color: #001080">trackerTransformNode</span><span style="color: #000000">;</span>
@@ -3467,6 +3490,7 @@ img {
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-class"><a href="classes/barcodefinder.html" class="tsd-kind-icon">Barcode<wbr>Finder</a></li>
 							<li class="tsd-kind-class"><a href="classes/camera.html" class="tsd-kind-icon">Camera</a></li>
+							<li class="tsd-kind-class"><a href="classes/cameraenvironmentmap.html" class="tsd-kind-icon">Camera<wbr>Environment<wbr>Map</a></li>
 							<li class="tsd-kind-class"><a href="classes/camerasource.html" class="tsd-kind-icon">Camera<wbr>Source</a></li>
 							<li class="tsd-kind-class"><a href="classes/faceanchortransformnode.html" class="tsd-kind-icon">Face<wbr>Anchor<wbr>Transform<wbr>Node</a></li>
 							<li class="tsd-kind-class tsd-is-external"><a href="classes/facelandmark.html" class="tsd-kind-icon">Face<wbr>Landmark</a></li>
@@ -3545,7 +3569,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">on<wbr>Frame<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol"> = ...</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/8be4d76/src/defaultpipeline.ts#L9">src/defaultpipeline.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/37a357e/src/defaultpipeline.ts#L9">src/defaultpipeline.ts:9</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3557,10 +3581,10 @@ img {
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="skipversionlog" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> skip<wbr>Version<wbr>Log</h3>
-				<div class="tsd-signature tsd-kind-icon">skip<wbr>Version<wbr>Log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0.3.26&quot;</span><span class="tsd-signature-symbol"> = &quot;0.3.26&quot;</span></div>
+				<div class="tsd-signature tsd-kind-icon">skip<wbr>Version<wbr>Log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;0.3.27&quot;</span><span class="tsd-signature-symbol"> = &quot;0.3.27&quot;</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/8be4d76/src/version.ts#L4">src/version.ts:4</a></li>
+						<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/37a357e/src/version.ts#L4">src/version.ts:4</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3629,7 +3653,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/8be4d76/src/defaultpipeline.ts#L114">src/defaultpipeline.ts:114</a></li>
+								<li>Defined in <a href="https://github.com/zappar-xr/zappar-babylonjs/blob/37a357e/src/defaultpipeline.ts#L114">src/defaultpipeline.ts:114</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
