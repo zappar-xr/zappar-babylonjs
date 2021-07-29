@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.3.28] - 2021-07-05
+## [0.3.28] - 2021-07-29
+
+### Fixed
+
+- Some readme inconsistencies.
+
+## [0.3.27] - 2021-07-05
 
 ### Added
 

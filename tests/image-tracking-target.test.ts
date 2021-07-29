@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import * as util from "@zappar/test-utils";
+import * as util from "@zappar/jest-console-logs";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 
 expect.extend({ toMatchImageSnapshot });
@@ -12,9 +12,9 @@ const testName = "image-tracking-target";
   describe(`${testType} ${testName}`, () => {
     it("console logs", async () => {
       const page = await browser.newPage();
-      page.goto(url);
-      await util.expectConsoleLogs(
-        [
+      page.goto(url, { timeout: 0 });
+      await util.expectLogs({
+        expected: [
           /^Zappar for BabylonJS v/,
           /Zappar JS v\d*.\d*.\d*/,
           /Zappar CV v\d*.\d*.\d*/,
@@ -28,18 +28,9 @@ const testName = "image-tracking-target";
           "[Zappar] INFO image target loaded",
           "Anchor is visible",
         ],
-        page as any,
-        60000,
-        new Set([
-          "[Zappar] INFO no display data",
-          "[HMR] Waiting for update signal from WDS...",
-          "[WDS] Hot Module Replacement enabled.",
-          "[WDS] Live Reloading enabled.",
-          "[Zappar] INFO image tracker camera model recalculation",
-          "[WDS] App hot update...",
-          "[HMR] Checking for updates on the server...",
-        ])
-      );
+        page,
+        timeoutMs: 60000,
+      });
 
       const screenshot = await page.screenshot();
       expect(screenshot).toMatchImageSnapshot({

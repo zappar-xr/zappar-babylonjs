@@ -61,7 +61,7 @@ You may also be interested in:
          * [Instant World Tracking](#instant-world-tracking)
       * [Links and Resources](#links-and-resources)
 
-<!-- Added by: zapparadmin, at: Tue Jul 13 15:40:23 BST 2021 -->
+<!-- Added by: zapparadmin, at: Thu Jul 29 17:36:32 BST 2021 -->
 
 <!--te-->
 </details>
@@ -101,7 +101,7 @@ Unzip into your web project and reference from your HTML like this:
 Reference the zappar.js library from your HTML like this:
 
 ```html
-<script src="https://libs.zappar.com/zappar-babylon/0.3.27/zappar-babylon.js"></script>
+<script src="https://libs.zappar.com/zappar-babylon/0.3.28/zappar-babylon.js"></script>
 ```
 
 ### NPM Webpack Package
@@ -315,15 +315,10 @@ The SDK provides an automatically generated environment map that's useful if you
 
 To use the map, first construct an instance:
 ```ts
-const env = new ZapparBabylon.CameraEnvironmentMap(camera, engine);
+const envMap = new ZapparBabylon.CameraEnvironmentMap(camera, engine);
 ```
 
-Attach the map to your scene to affect all relevant materials:
-```ts
-scene.environmentTexture = envMap.environmentMap;
-```
-
-Or attach it to specific materials, if you prefer:
+Attach it to specific materials:
 ```ts
 material.environmentTexture = envMap.environmentMap;
 ```

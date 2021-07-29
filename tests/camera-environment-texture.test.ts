@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import * as util from "@zappar/test-utils";
+import * as util from "@zappar/jest-console-logs";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 
 expect.extend({ toMatchImageSnapshot });
@@ -12,9 +12,9 @@ const testName = "camera-environment-texture";
   describe(`${testType} ${testName}`, () => {
     it("console logs", async () => {
       const page = await browser.newPage();
-      page.goto(url);
-      await util.expectConsoleLogs(
-        [
+      page.goto(url, { timeout: 0 });
+      await util.expectLogs({
+        expected: [
           /^Zappar for BabylonJS v/,
           /Zappar JS v\d*.\d*.\d*/,
           /Zappar CV v\d*.\d*.\d*/,
@@ -24,17 +24,9 @@ const testName = "camera-environment-texture";
           "[Zappar] INFO pipeline_t initialized",
           "[Zappar] INFO identity for license check: 0.0.0.0",
         ],
-        page as any,
-        60000,
-        new Set([
-          "[Zappar] INFO no display data",
-          "[HMR] Waiting for update signal from WDS...",
-          "[WDS] Hot Module Replacement enabled.",
-          "[WDS] Live Reloading enabled.",
-          "[WDS] App hot update...",
-          "[HMR] Checking for updates on the server...",
-        ])
-      );
+        page,
+        timeoutMs: 60000,
+      });
 
       // Wait a moment for texture to load.
       await new Promise((resolve) => setTimeout(resolve, 1500));
