@@ -58,7 +58,7 @@
     "eslint-plugin-tsdoc": "^0.2.14",
     "eslint-webpack-plugin": "^2.5.4",
     "html-webpack-plugin": "^5.3.2",
-    "husky": "^4.3.8",
+    "husky": "^7.0.2",
     "jest": "^27.0.6",
     "jest-image-snapshot": "^4.5.1",
     "jest-puppeteer": "^5.0.3",
