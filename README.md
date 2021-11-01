@@ -61,7 +61,7 @@ You may also be interested in:
          * [Instant World Tracking](#instant-world-tracking)
       * [Links and Resources](#links-and-resources)
 
-<!-- Added by: zapparadmin, at: Thu Jul 29 17:36:32 BST 2021 -->
+<!-- Added by: zapparadmin, at: Mon Nov  1 14:14:36 GMT 2021 -->
 
 <!--te-->
 </details>
@@ -101,7 +101,7 @@ Unzip into your web project and reference from your HTML like this:
 Reference the zappar.js library from your HTML like this:
 
 ```html
-<script src="https://libs.zappar.com/zappar-babylon/0.3.28/zappar-babylon.js"></script>
+<script src="https://libs.zappar.com/zappar-babylon/0.3.29/zappar-babylon.js"></script>
 ```
 
 ### NPM Webpack Package
@@ -326,7 +326,7 @@ material.environmentTexture = envMap.environmentMap;
 Finally, call `update()` on the map each frame, between updating the camera and rendering the scene:
 ```ts
 engine.runRenderLoop(() => {
-  env.update();
+  envMap.update();
   scene.render();
 });
 ```

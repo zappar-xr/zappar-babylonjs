@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.29] - 2021-11-01
+
+### Changed
+
+- Pinned dependencies to exact versions
+
 ## [0.3.28] - 2021-07-29
 
 ### Fixed
