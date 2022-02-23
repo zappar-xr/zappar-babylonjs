@@ -147,19 +147,11 @@ class Camera extends BABYLON.FreeCamera {
 
   private _gl: WebGLRenderingContext;
 
-  private __scene: BABYLON.Scene;
-
-  private _emptyScene: BABYLON.Scene;
-
-  private _emptyTarget: BABYLON.InternalTexture;
-
   private _cameraRunningRear: boolean | null = null;
 
   private _hasSetCSSScaleX = false;
 
   private updateInternally: boolean | undefined;
-
-  private sceneReady: boolean = false;
 
   private zFar: number | undefined;
 
@@ -179,7 +171,6 @@ class Camera extends BABYLON.FreeCamera {
   public constructor(name: string, scene: BABYLON.Scene, opts?: Options) {
     super(name, new BABYLON.Vector3(0, 0, 0), scene);
 
-    this.__scene = scene;
     this._engine = scene.getEngine();
     this._gl = this._engine._gl;
 
@@ -209,15 +200,6 @@ class Camera extends BABYLON.FreeCamera {
 
     document.addEventListener("visibilitychange", () => {
       document.visibilityState === "visible" ? this._resume() : this._pause();
-    });
-
-    this._emptyScene = new BABYLON.Scene(this._engine);
-    this._emptyScene.detachControl();
-    // Need a dummy cam to render the empty scene at least once
-    const dummyCam = new BABYLON.Camera("cam", new BABYLON.Vector3(0, 0, 0), this._emptyScene);
-    this._emptyTarget = new BABYLON.InternalTexture(this._engine, 2);
-    this.__scene.executeWhenReady(() => {
-      this.sceneReady = true;
     });
   }
 
@@ -270,21 +252,9 @@ class Camera extends BABYLON.FreeCamera {
   }
 
   private _updateLayerTexture(): void {
-    if (!this.sceneReady) return;
-    const target = this._engine._currentRenderTarget;
-    this._engine._currentRenderTarget = this._emptyTarget;
-
-    this._emptyScene.render();
-
     this.pipeline.processGL();
     this.pipeline.cameraFrameUploadGL();
     this.pipeline.frameUpdate();
-
-    this._engine._currentRenderTarget = target;
-    this.__scene.autoClear = false;
-    this._engine.wipeCaches(true);
-    this._engine.restoreDefaultFramebuffer();
-    this._engine.resetTextureCache();
 
     const webglTexture = this.pipeline.cameraFrameTextureGL();
     if (webglTexture === undefined) return;

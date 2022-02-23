@@ -1,6 +1,6 @@
 {
   "name": "@zappar/zappar-babylonjs",
-  "version": "0.3.30",
+  "version": "0.3.32",
   "description": "BabylonJS wrappers for Zappar's computer vision library",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
@@ -57,6 +57,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-tsdoc": "0.2.14",
     "eslint-webpack-plugin": "2.5.4",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "5.3.2",
     "husky": "4.3.8",
     "jest": "27.0.6",
@@ -75,7 +76,7 @@
     "webpack-dev-server": "4.7.3"
   },
   "dependencies": {
-    "@zappar/zappar": "^0.3.15",
+    "@zappar/zappar": "^0.3.17",
     "gl-matrix": "3.3.0"
   },
   "peerDependencies": {

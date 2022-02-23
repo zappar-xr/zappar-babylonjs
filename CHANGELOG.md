@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.3.30] - 2021-01-24
+## [0.3.31] - 2022-02-02
+
+### Fixed
+
+- External WebGL state is preserved during `process_gl` calls.
+
+## [0.3.30] - 2022-01-24
 
 - Updated dependencies.
 
