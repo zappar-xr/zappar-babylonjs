@@ -1,7 +1,7 @@
 /**
  * SDK version.
  */
-const VERSION = "0.3.32";
+const VERSION = "0.3.33";
 
 console.log(`Zappar for BabylonJS v${VERSION}`);
 

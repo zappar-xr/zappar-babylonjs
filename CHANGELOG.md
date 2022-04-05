@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Migrated to `Webpack@5` Workers.
+
+## [0.3.32] - 2022-04-05
+
+### Fixed
+
+- Camera `layer` for BabylonJS v5+.
+
 ## [0.3.31] - 2022-02-02
 
 ### Fixed

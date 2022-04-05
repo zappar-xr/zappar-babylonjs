@@ -1,6 +1,6 @@
 {
   "name": "@zappar/zappar-babylonjs",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "description": "BabylonJS wrappers for Zappar's computer vision library",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
@@ -37,8 +37,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/expect-puppeteer": "4.4.6",
-    "@types/jest": "26.0.24",
-    "@types/jest-environment-puppeteer": "4.4.1",
+    "@types/jest": "^27.4.1",
+    "@types/jest-environment-puppeteer": "^5.0.0",
     "@types/jest-image-snapshot": "4.3.1",
     "@types/node": "15.3.0",
     "@types/puppeteer": "5.4.4",
@@ -46,9 +46,9 @@
     "@typescript-eslint/eslint-plugin": "4.28.5",
     "@typescript-eslint/parser": "4.28.5",
     "@zappar/jest-console-logs": "1.0.2",
-    "babylonjs": "4.2.1",
-    "babylonjs-gui": "4.2.1",
-    "babylonjs-loaders": "4.2.1",
+    "babylonjs": "^5.0.3",
+    "babylonjs-gui": "^5.0.3",
+    "babylonjs-loaders": "^5.0.3",
     "copy-webpack-plugin": "8.1.1",
     "eslint": "7.31.0",
     "eslint-config-airbnb-base": "14.2.1",
@@ -60,27 +60,28 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "5.3.2",
     "husky": "4.3.8",
-    "jest": "27.0.6",
+    "jest": "^27.5.1",
     "jest-image-snapshot": "4.5.1",
     "jest-puppeteer": "5.0.4",
     "lint-staged": "11.1.1",
     "prettier": "2.3.2",
     "puppeteer": "9.1.1",
     "stats.js": "0.17.0",
-    "ts-jest": "27.0.4",
+    "ts-jest": "^27.1.4",
     "ts-loader": "9.2.4",
-    "typedoc": "0.22.11",
-    "typescript": "4.2.4",
+    "typedoc": "^0.22.13",
+    "typescript": "~4.6.2",
     "webpack": "5.47.1",
-    "webpack-cli": "4.7.2",
-    "webpack-dev-server": "4.7.3"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "4.7.3",
+    "worker-loader": "^3.0.8"
   },
   "dependencies": {
     "@zappar/zappar": "^0.3.17",
     "gl-matrix": "3.3.0"
   },
   "peerDependencies": {
-    "babylonjs": "4.0.0 - 4.2.1"
+    "babylonjs": ">= 4.0.0"
   },
   "husky": {
     "hooks": {

@@ -177,8 +177,6 @@ class Camera extends BABYLON.FreeCamera {
     // Shortest blank img uri
     this.backgroundTexture = new BABYLON.Texture("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", scene);
 
-    // this.backgroundTexture.level = 0;
-
     this.layer = new BABYLON.Layer("zapparCameraBackgroundLayer", null, scene);
     this.layer.texture = this.backgroundTexture;
     this.layer.isBackground = true;
@@ -259,7 +257,11 @@ class Camera extends BABYLON.FreeCamera {
     const webglTexture = this.pipeline.cameraFrameTextureGL();
     if (webglTexture === undefined) return;
 
-    (this as any).layer.texture._texture._webGLTexture = webglTexture;
+    if ((this as any).layer.texture?._texture?._hardwareTexture) {
+      (this as any).layer.texture?._texture?._hardwareTexture?.set(webglTexture);
+    } else {
+      (this as any).layer.texture._texture._webGLTexture = webglTexture;
+    }
     const view = this.pipeline.cameraFrameTextureMatrix(
       this._engine.getRenderWidth(),
       this._engine.getRenderHeight(),
