@@ -4,7 +4,13 @@
 
 - Migrated to `Webpack@5` Workers.
 
-## [0.3.32] - 2022-04-05
+## [0.3.34] - 2022-04-21
+
+### Fixed
+
+- An issue where the camera `layer` would not get rendered if there are no loaded materials in the scene.
+
+## [0.3.32 - 0.3.33] - 2022-04-05
 
 ### Fixed
 

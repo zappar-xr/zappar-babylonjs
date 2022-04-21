@@ -61,7 +61,7 @@ You may also be interested in:
          * [Instant World Tracking](#instant-world-tracking)
       * [Links and Resources](#links-and-resources)
 
-<!-- Added by: zapparadmin, at: Tue Apr  5 12:41:10 BST 2022 -->
+<!-- Added by: zapparadmin, at: Thu Apr 21 15:35:42 BST 2022 -->
 
 <!--te-->
 </details>
@@ -101,7 +101,7 @@ Unzip into your web project and reference from your HTML like this:
 Reference the zappar.js library from your HTML like this:
 
 ```html
-<script src="https://libs.zappar.com/zappar-babylon/0.3.33/zappar-babylon.js"></script>
+<script src="https://libs.zappar.com/zappar-babylon/0.3.34/zappar-babylon.js"></script>
 ```
 
 ### NPM Webpack Package

@@ -157,6 +157,8 @@ class Camera extends BABYLON.FreeCamera {
 
   private zNear: number | undefined;
 
+  private ready = false;
+
   /**
    * Constructs a new Camera.
    * @param name - The name of the camera.
@@ -174,13 +176,10 @@ class Camera extends BABYLON.FreeCamera {
     this._engine = scene.getEngine();
     this._gl = this._engine._gl;
 
-    // Shortest blank img uri
-    this.backgroundTexture = new BABYLON.Texture("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", scene);
-
+    this.backgroundTexture = new BABYLON.Texture(null, scene);
     this.layer = new BABYLON.Layer("zapparCameraBackgroundLayer", null, scene);
     this.layer.texture = this.backgroundTexture;
     this.layer.isBackground = true;
-
     this.pipeline = opts instanceof Zappar.Pipeline ? opts : opts?.pipeline || getDefaultPipeline();
     this.pipeline.glContextSet(this._gl);
     this.rawPose = this.pipeline.cameraPoseDefault();
@@ -256,12 +255,22 @@ class Camera extends BABYLON.FreeCamera {
 
     const webglTexture = this.pipeline.cameraFrameTextureGL();
     if (webglTexture === undefined) return;
+    if (!this.ready) {
+      if ((this as any)._engine.wrapWebGLTexture) {
+        // babylon 5
+        const wrappedTexture = (this as any)._engine.wrapWebGLTexture(webglTexture);
+        (this as any).layer.texture._texture = wrappedTexture;
+      } else {
+        // babylon 4
+        const internalTexture = new BABYLON.InternalTexture(this._engine, BABYLON.InternalTextureSource.Unknown, true);
+        (internalTexture as any)._webGLTexture = webglTexture;
+        internalTexture.isReady = true;
+        (this as any).layer.texture._texture = internalTexture;
+      }
 
-    if ((this as any).layer.texture?._texture?._hardwareTexture) {
-      (this as any).layer.texture?._texture?._hardwareTexture?.set(webglTexture);
-    } else {
-      (this as any).layer.texture._texture._webGLTexture = webglTexture;
+      this.ready = true;
     }
+
     const view = this.pipeline.cameraFrameTextureMatrix(
       this._engine.getRenderWidth(),
       this._engine.getRenderHeight(),
