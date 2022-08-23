@@ -61,7 +61,7 @@ You may also be interested in:
          * [Instant World Tracking](#instant-world-tracking)
       * [Links and Resources](#links-and-resources)
 
-<!-- Added by: zapparadmin, at: Thu Apr 21 15:35:42 BST 2022 -->
+<!-- Added by: zapparadmin, at: Tue Aug 23 14:01:07 BST 2022 -->
 
 <!--te-->
 </details>
@@ -101,7 +101,7 @@ Unzip into your web project and reference from your HTML like this:
 Reference the zappar.js library from your HTML like this:
 
 ```html
-<script src="https://libs.zappar.com/zappar-babylon/0.3.34/zappar-babylon.js"></script>
+<script src="https://libs.zappar.com/zappar-babylon/2.0.0/zappar-babylon.js"></script>
 ```
 
 ### NPM Webpack Package
@@ -118,24 +118,7 @@ Then import the library into your JavaScript or TypeScript files:
 import * as ZapparBabylon from "@zappar/zappar-babylonjs";
 ```
 
-The final step is to add this necessary entry to your webpack `rules`:
-
-```ts
-module.exports = {
-  //...
-  module: {
-    rules: [
-      //...
-      {
-        test: /zcv\.wasm$/,
-        type: "javascript/auto",
-        loader: "file-loader"
-      }
-      //...
-    ]
-  }
-};
-```
+Please note - This library supports Webpack 5 and later.
 
 ## Overview
 

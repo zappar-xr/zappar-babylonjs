@@ -35,9 +35,9 @@ const testName = "face-tracking-face-mesh";
       const screenshot = await page.screenshot();
       expect(screenshot).toMatchImageSnapshot({
         customDiffConfig: {
-          threshold: 0.025,
+          threshold: 0.03,
         },
-        failureThreshold: 0.025,
+        failureThreshold: 0.03,
         failureThresholdType: "percent",
       });
       // Avoid premature exit

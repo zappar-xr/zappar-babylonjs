@@ -27,11 +27,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /zcv\.wasm$/,
-        type: "javascript/auto",
-        loader: "file-loader",
-      },
-      {
         test: /\.(zpt|png|gif|glb|gltf|jpe?g|ogg|mp3|obj|fbx|wav|ttf|fnf|woff|stl|mp4|hdr|webm)$/,
         use: [
           {

@@ -13,6 +13,7 @@ export { default as FaceMeshLoader } from "./loaders/faceMesh";
 export { default as HeadMaskMeshLoader } from "./loaders/headMaskMesh";
 export { default as ImageTrackerLoader } from "./loaders/imageTracker";
 export { default as CameraEnvironmentMap } from "./cameraEnvironmentTexture";
+export { default as TargetImagePreviewMesh } from "./mesh/target-image-preview-mesh";
 
 export {
   ImageAnchor,
@@ -32,6 +33,7 @@ export {
   browserIncompatibleUI,
   setLogLevel,
   LogLevel,
+  SequenceSource,
 } from "@zappar/zappar";
 
 export {
