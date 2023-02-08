@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0] - 2023-02-08
+
+### Changed
+
+- Build target to `ESNext`.
+- Updated dependencies.
+
 ## [2.0.0] - 2022-08-23
 
 ### Added
