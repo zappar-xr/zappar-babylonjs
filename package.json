@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "@zappar/zappar": "^2.1.0",
-    "gl-matrix": "3.3.0"
+    "gl-matrix": "3.4.3"
   },
   "peerDependencies": {
     "babylonjs": ">= 4.0.0"
