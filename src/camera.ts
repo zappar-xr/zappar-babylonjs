@@ -269,6 +269,8 @@ class Camera extends BABYLON.FreeCamera {
       }
 
       this.ready = true;
+    } else {
+      (this as any).layer.texture!._texture!._hardwareTexture!._webGLTexture = webglTexture;
     }
 
     const view = this.pipeline.cameraFrameTextureMatrix(
